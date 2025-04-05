@@ -1,13 +1,21 @@
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from loguru import logger
-
+from enum import StrEnum, auto
 import torch
 
 DEFAULT_MODEL = "all-MiniLM-L6-v2"
 
+
+class EmbeddingModels:
+    ALL_MINI_L6_V2 = "all-MiniLM-L6-v2"
+    GTE_MULTILINGUAL_BASE = "Alibaba-NLP/gte-multilingual-base"
+
+
 # Global model loaded on module import
-MODEL = SentenceTransformer(DEFAULT_MODEL)
+MODEL = SentenceTransformer(
+    EmbeddingModels.GTE_MULTILINGUAL_BASE, trust_remote_code=True
+)
 
 torch.classes.__path__ = []
 
