@@ -1,8 +1,8 @@
-from enum import StrEnum, auto
-from pydantic import BaseModel, Field
-import hashlib
 from datetime import datetime
-from typing import Optional
+from enum import StrEnum, auto
+
+from pydantic import BaseModel, Field
+
 from job_recsys.core.utils import hash_url
 
 
@@ -65,10 +65,10 @@ class JobData(BaseModel):
         raw_html (Optional[str]): The raw HTML content of the job listing. Can be None if not available.
     """
 
-    title: Optional[str] = None
-    location: Optional[str] = None
-    description: Optional[str] = None
-    raw_html: Optional[str] = None
+    title: str | None = None
+    location: str | None = None
+    description: str | None = None
+    raw_html: str | None = None
 
 
 class JobListing(BaseModel):

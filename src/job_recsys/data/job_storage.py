@@ -1,5 +1,5 @@
-from job_recsys.core.storage.base import Storage
 from job_recsys.core.models.job import JobListing
+from job_recsys.core.storage.base import Storage
 from job_recsys.core.utils import hash_url
 
 
