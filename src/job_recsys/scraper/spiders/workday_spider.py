@@ -1,7 +1,7 @@
 """Workday job listing spider implementation."""
 
 import re
-from typing import Generator
+from collections.abc import Generator
 from urllib.parse import urljoin
 
 import scrapy
