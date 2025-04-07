@@ -26,3 +26,6 @@ convention = "google"
 
 [lint.per-file-ignores]
 "__init__.py" = ["E402", "D104"]
+"run_spider.py" = [
+    "T201" # don't flag the CLI that needs to print
+] 
