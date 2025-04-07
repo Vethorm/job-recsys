@@ -1,6 +1,7 @@
 from job_recsys.core.models.job import JobListing
 from job_recsys.core.storage.base import Storage
 from job_recsys.core.utils import hash_url
+from loguru import logger
 
 
 class JobStorage:
@@ -89,4 +90,6 @@ class JobStorage:
         """
         url_hash = hash_url(url)
         key = self._get_storage_key(company, url_hash)
-        return self.storage.exists(key)
+        result = self.storage.exists(key)
+        logger.debug(f"Checking if {company} {url} exists - was {result}")
+        return result
