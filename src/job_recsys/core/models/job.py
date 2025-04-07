@@ -48,8 +48,8 @@ class JobMetadata(BaseModel):
     source_url: str
     url_hash: str
     company: str
-    first_seen: datetime = Field(default_factory=datetime.now)
-    last_updated: datetime = Field(default_factory=datetime.now)
+    # first_seen: datetime = Field(default_factory=datetime.now)
+    # last_updated: datetime = Field(default_factory=datetime.now)
     version: int = 1
     status: JobStatus
     processing_status: ProcessingStatus = Field(default_factory=ProcessingStatus)
@@ -102,7 +102,7 @@ class JobListing(BaseModel):
         """
         url_hash = hash_url(url)
 
-        metadata = JobMetadata(source_url=url, url_hash=url_hash, company=company)
+        metadata = JobMetadata(source_url=url, url_hash=url_hash, company=company, status=JobStatus.ACTIVE)
         return cls(data=job_data, metadata=metadata)
 
     def update_status(self, status: JobStatus) -> None:
