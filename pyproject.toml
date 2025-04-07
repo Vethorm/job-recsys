@@ -22,3 +22,6 @@ dependencies = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[project.scripts]
+run-job-spiders = "job_recsys.scripts.run_spider:main"
