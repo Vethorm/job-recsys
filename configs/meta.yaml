@@ -1,0 +1,74 @@
+# Test for Meta Careers Spider Configuration
+
+# Domains that this spider is allowed to crawl
+allowed_domains:
+  - www.metacareers.com
+
+# Initial URLs to start crawling from
+start_urls:
+  - https://www.metacareers.com/jobs/
+
+# Patterns to identify sitemap XML files
+sitemap_patterns:
+  - "<urlset"
+  - "<sitemapindex"
+
+# Selectors to identify job listing pages (pages with multiple job listings)
+job_listing_page_selectors:
+  - "div._8tk7"
+  - "div.jobs-list"
+  - "div[data-testid='job-search-results']"
+
+# URL patterns that indicate a job listing page (pages with multiple job listings)
+job_listing_page_url_patterns:
+  - "/jobs/\\?"
+  - "/jobs/search/"
+
+# URL patterns that indicate a job detail page
+job_url_patterns:
+  - "/jobs/[0-9]+/"
+  - "/positions/[0-9]+"
+
+# Selectors to extract job detail URLs from listing pages
+job_link_selectors:
+  - "a[href*='/jobs/'][data-testid='job-link']::attr(href)"
+  - "div._8tk7 a::attr(href)"
+  - "a.job-listing-item::attr(href)"
+
+# Selectors to find the next page link in job listing pages
+next_page_selectors:
+  - "a[aria-label='Next']::attr(href)"
+  - "button[aria-label='Next page']::attr(href)"
+  - "div.pagination a.next::attr(href)"
+
+# Selectors to extract the job title from job detail pages
+job_title_selectors:
+  - "h1._8voz::text"
+  - "h1.job-title::text"
+  - "div[data-testid='job-title'] h1::text"
+
+# Selectors to extract the job location from job detail pages
+job_location_selectors:
+  - "div._8vp9::text"
+  - "div.job-location::text"
+  - "div[data-testid='job-location']::text"
+
+# Selectors to extract the job description from job detail pages
+job_description_selectors:
+  - "div._8vo4"
+  - "div.job-description"
+  - "div[data-testid='job-description']"
+
+# Additional fields to extract (optional)
+additional_field_selectors:
+  salary:
+    - "div.salary-range::text"
+    - "span[data-testid='salary']::text"
+  
+  requirements:
+    - "div.requirements"
+    - "div[data-testid='requirements']"
+  
+  team:
+    - "div.team-info::text"
+    - "span[data-testid='team']::text"
